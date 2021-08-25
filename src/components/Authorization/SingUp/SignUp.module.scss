@@ -4,7 +4,7 @@ $inputBorder-color: #d5d5d5;
 $error-color: #ec5a5a;
 
 
-.signIn {
+.signUp {
   &__wrapper {
     width: 600px;
     margin: 0 auto;
@@ -37,9 +37,10 @@ $error-color: #ec5a5a;
     padding-left: 10px;
     box-sizing: border-box;
     display: inline;
-    box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.1);
-    &:hover, &:active, &:focus{
-      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1);
+
+    &:hover, &:active, &:focus {
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 
     }
   }
@@ -66,22 +67,47 @@ $error-color: #ec5a5a;
     border: none;
     padding: 10px 50px;
     cursor: pointer;
-    color:#FFFFFF;
-    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1);
+    color: #FFFFFF;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
     transition: .1s;
-    &:hover{
-      box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.1);
+
+    &:hover {
+      box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
       transform: scale(1.005);
     }
   }
 
   &__status {
-    span{
-      color:$error-color;
+    span {
+      color: $error-color;
     }
-    img{
-      width: 40px ;
+
+    img {
+      width: 40px;
     }
   }
 
+}
+
+@media (max-width: 720px) {
+  .signUp {
+    &__wrapper {
+      width: 96%;
+    }
+
+    &__wrapper {
+      width: 350px;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .signUp {
+    &__wrapper {
+      width: 96%;
+    }
+    &__wrapper {
+      width: 300px;
+    }
+  }
 }

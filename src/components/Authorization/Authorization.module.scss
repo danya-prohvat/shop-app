@@ -4,6 +4,8 @@ $beforeActive-background: #00A046;
 $formBorder-color: #d5d5d5;
 
 .authorization {
+  padding-top: 150px;
+
   &__wrapper {
     width: 80%;
     margin: 0 auto;
@@ -28,12 +30,14 @@ $formBorder-color: #d5d5d5;
     position: relative;
     padding: 15px 0;
     cursor: pointer;
+
     span {
       text-align: center;
       font-family: 'Ubuntu', sans-serif;
       font-size: 24px;
     }
-    &:before{
+
+    &:before {
       content: '';
       position: absolute;
       bottom: 0;
@@ -43,9 +47,11 @@ $formBorder-color: #d5d5d5;
       background-color: $before-background;
     }
   }
+
   &__method_active {
     cursor: default;
-    &:before{
+
+    &:before {
       background-color: $beforeActive-background;
     }
   }
@@ -58,3 +64,27 @@ $formBorder-color: #d5d5d5;
 
   }
 }
+
+@media (max-width: 720px) {
+  .authorization {
+    &__wrapper {
+      width: 96%;
+    }
+
+    &__form {
+      width: 350px;
+    }
+  }
+}
+@media (max-width: 370px) {
+  .authorization {
+    &__wrapper {
+      width: 96%;
+    }
+
+    &__form {
+      width: 300px;
+    }
+  }
+}
+

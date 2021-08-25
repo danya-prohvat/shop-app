@@ -6,6 +6,7 @@ $a-color: #6565ec;
   background-color: $navMenu-background;
 
   &__wrapper {
+    max-width: 1360px;
     width: 80%;
     margin: 0 auto;
 
@@ -41,20 +42,24 @@ $a-color: #6565ec;
   &__customer {
     display: flex;
     align-items: center;
+
     .customer {
       &__person {
         display: flex;
         align-items: center;
-        img{
+
+        img {
           width: 40px;
           margin-right: 7px;
         }
-        span{
+
+        span {
           color: $text-color;
           font-family: 'Ubuntu', sans-serif;
           font-size: 16px;
           font-weight: 400;
-          a{
+
+          a {
             color: $a-color;
           }
         }
@@ -65,5 +70,40 @@ $a-color: #6565ec;
         width: 40px;
       }
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .navMenu {
+    background-color: $navMenu-background;
+
+    &__wrapper {
+      max-width: 1000px;
+      width: 96%;
+      margin: 0 auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    &__logo {
+      .logo {
+        &__img {
+          display: none;
+        }
+      }
+
+    }
+
+    .customer {
+      &__person {
+        img {
+          display: none;
+        }
+      }
+    }
+
   }
 }
