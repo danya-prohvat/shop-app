@@ -18,7 +18,6 @@ const SignUp: React.FC = () => {
     const dispatch = useDispatch();
     const {formData} = useTypedSelector(state => state.customerReducerPage)
 
-
     const initialValues: ISingUpFormValues = {
         name: '',
         email: '',

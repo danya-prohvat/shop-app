@@ -5,6 +5,8 @@ $formBorder-color: #d5d5d5;
 
 .authorization {
   padding-top: 150px;
+  padding-bottom: 100px;
+  box-sizing: border-box;
 
   &__wrapper {
     width: 80%;
@@ -67,6 +69,8 @@ $formBorder-color: #d5d5d5;
 
 @media (max-width: 720px) {
   .authorization {
+    padding-top: 120px;
+    padding-bottom: 50px;
     &__wrapper {
       width: 96%;
     }
@@ -78,6 +82,8 @@ $formBorder-color: #d5d5d5;
 }
 @media (max-width: 370px) {
   .authorization {
+    padding-top: 80px;
+    padding-bottom: 30px;
     &__wrapper {
       width: 96%;
     }

@@ -18,7 +18,6 @@ const SingIn: React.FC = () => {
     const dispatch = useDispatch();
     const {formData} = useTypedSelector(state => state.customerReducerPage)
 
-
     const initialValues: ISingInFormValues = {
         email: '',
         password: ''

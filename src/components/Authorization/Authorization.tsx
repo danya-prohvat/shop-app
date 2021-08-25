@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import styles from "./Authorization.module.scss";
 import classNames from 'classnames';
-import {Formik} from 'formik';
 import SingIn from "./SingIn/SingIn";
 import SingUp from "./SingUp/SingUp";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {Redirect} from "react-router-dom";
-import {useSelector} from "react-redux";
 
 
 const Authorization: React.FC = () => {
@@ -15,7 +13,7 @@ const Authorization: React.FC = () => {
 
     if (authorized) return <Redirect to="/"/>
 
-    const authorizationMethodOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const authorizationMethodOnClick = (event: React.MouseEvent<HTMLDivElement>): void => {
         if (event.currentTarget.id === 'Sign in') setAuthorizationMethod(true);
         else setAuthorizationMethod(false);
     }

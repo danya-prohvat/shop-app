@@ -98,6 +98,26 @@ $error-color: #ec5a5a;
     &__wrapper {
       width: 350px;
     }
+
+    &__error {
+      margin-left: 0;
+      margin-top: 4px;
+      display: block;
+    }
+
+    &__submit {
+      flex-wrap: wrap;
+    }
+
+    &__btn {
+      margin-bottom: 12px;
+    }
+
+    &__status {
+      img {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 
@@ -106,6 +126,7 @@ $error-color: #ec5a5a;
     &__wrapper {
       width: 96%;
     }
+
     &__wrapper {
       width: 300px;
     }
