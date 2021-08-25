@@ -1,0 +1,60 @@
+$formBlock-background: #eeeeee;
+$before-background: #e2e2e2;
+$beforeActive-background: #00A046;
+$formBorder-color: #d5d5d5;
+
+.authorization {
+  &__wrapper {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__form {
+    margin: 0 auto;
+    width: 600px;
+    background-color: $formBlock-background;
+    border: 1px solid $formBorder-color;
+
+  }
+
+  &__chooseMethod {
+    display: flex;
+
+  }
+
+  &__method {
+    width: 50%;
+    text-align: center;
+    position: relative;
+    padding: 15px 0;
+    cursor: pointer;
+    span {
+      text-align: center;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 24px;
+    }
+    &:before{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 7px;
+      background-color: $before-background;
+    }
+  }
+  &__method_active {
+    cursor: default;
+    &:before{
+      background-color: $beforeActive-background;
+    }
+  }
+
+  &__signIn {
+
+  }
+
+  &__signUp {
+
+  }
+}
