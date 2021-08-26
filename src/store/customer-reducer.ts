@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {ICustomerInitialState} from "../types/customer-types";
+import {ICustomerData, ICustomerInitialState} from "../types/customer-types";
 import {ISingInFormValues, ISingUpFormValues} from "../types/authoriationTypes";
 import axios from "axios";
 
@@ -17,8 +17,8 @@ const initialState: ICustomerInitialState = {
 
 export const signInThunk = createAsyncThunk(
     'customer/signIn',
-    async (values: ISingInFormValues) => {
-        return axios.get(`http://localhost:3001/customers?email=${values.email}&password=${values.password}`)
+    async ({email, password}: ISingInFormValues) => {
+        return axios.get(`http://localhost:3001/customers?email=${email}&password=${password}`)
             .then(response => (response.data))
     }
 )
@@ -30,7 +30,11 @@ export const signUpThunk = createAsyncThunk(
         if (isCustomer.length > 0)
             return 'That account already exists'
         else
-            return axios.post(`http://localhost:3001/customers`, values)
+            return axios.post(`http://localhost:3001/customers`, {
+                email: values.email,
+                password: values.password,
+                name: values.name,
+            })
                 .then(response => (response.data))
     }
 )
@@ -42,7 +46,7 @@ const customerSlice = createSlice({
         toggleFormFetching(state) {
             state.formData.fetching = !state.formData.fetching
         },
-        signIn(state, action) {
+        signIn(state, action: PayloadAction<ICustomerData[]>) {
             if (action.payload.length > 0) {
                 state.formData.error = ''
                 state.authorized = true
@@ -50,32 +54,38 @@ const customerSlice = createSlice({
                 state.customerData.name = action.payload[0].name
             } else state.formData.error = 'Incorrect email or password'
         },
-        signUp(state, action) {
-            if (typeof action.payload === 'string') state.formData.error = action.payload
+        signUp(state, action: PayloadAction<ICustomerData | string>) {
+            if (typeof action.payload == 'string') state.formData.error = action.payload
             else {
                 state.customerData.email = action.payload.email
                 state.customerData.name = action.payload.name
                 state.authorized = true
                 state.formData.error = ''
             }
-            console.log(action)
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(signInThunk.pending, (state, action) => {
+        builder.addCase(signInThunk.pending, (state) => {
             customerSlice.caseReducers.toggleFormFetching(state);
         })
         builder.addCase(signInThunk.fulfilled, (state, action) => {
             customerSlice.caseReducers.signIn(state, action);
             customerSlice.caseReducers.toggleFormFetching(state);
         })
-        builder.addCase(signUpThunk.pending, (state, action) => {
+        builder.addCase(signInThunk.rejected, (state, action) => {
+            customerSlice.caseReducers.toggleFormFetching(state);
+            alert('Network error')
+        })
+        builder.addCase(signUpThunk.pending, (state) => {
             customerSlice.caseReducers.toggleFormFetching(state);
         })
         builder.addCase(signUpThunk.fulfilled, (state, action) => {
             customerSlice.caseReducers.signUp(state, action);
-
             customerSlice.caseReducers.toggleFormFetching(state);
+        })
+        builder.addCase(signUpThunk.rejected, (state, action) => {
+            customerSlice.caseReducers.toggleFormFetching(state);
+            alert('Network error')
         })
     },
 })
