@@ -117,8 +117,5 @@
       {"id": 62, "img": "", "title": "62", "price": 62},
       {"id": 63, "img": "", "title": "63", "price": 63},
       {"id": 64, "img": "", "title": "64", "price": 64}
-    ],
-  "laptopsInfo": {
-    "totalCountItems": 64
-  }
+    ]
 }

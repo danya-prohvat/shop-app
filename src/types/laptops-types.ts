@@ -1,8 +1,9 @@
-export interface ILaptopsInitialState extends ITotalCountItems {
+export interface ILaptopsInitialState {
     fetching: boolean,
     laptops: ILaptops[],
-    page: number,
+    activePage: number,
     pageSize: number,
+    totalLaptopsCount: number,
 }
 
 export interface ILaptops {
@@ -12,6 +13,3 @@ export interface ILaptops {
     price: number | null,
 }
 
-export interface ITotalCountItems {
-    totalCountItems: number,
-}
