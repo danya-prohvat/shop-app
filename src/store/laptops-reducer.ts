@@ -24,7 +24,11 @@ export const getLaptops = createAsyncThunk(
         const {pageSize} = getState().laptopsReducerPage
         dispatch(setActivePage(+page))
         return axios.get(`http://localhost:3001/laptops?_page=${page}&_limit=${pageSize}`)
-            .then(response => (response.data))
+            .then(response => {
+                console.log(response.data.length)
+                // id_gte=10&id_lte=20&
+                return response.data;
+            })
     }
 )
 

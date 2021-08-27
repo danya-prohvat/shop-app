@@ -8,15 +8,19 @@ import prevArrow from '../../../assets/imgs/prevArrow.svg';
 import nextArrow from '../../../assets/imgs/nextArrow.svg';
 
 const Pagination: React.FC = () => {
-    let {page, pageSize, totalCountItems} = useTypedSelector(state => state.laptopsReducerPage)
+    let {page, pageSize, totalCountItems} = useTypedSelector(state => state.laptopsReducerPage);
+    let paginationItems = [],
+        totalPages = Math.ceil(totalCountItems / pageSize);
     const dispatch = useDispatch();
 
     const paginationItemOnClick = (event: React.MouseEvent<HTMLLIElement>): void => {
         dispatch(getLaptops(event.currentTarget.textContent!))
     }
 
-    let paginationItems = [];
-    let totalPages = Math.ceil(totalCountItems / pageSize);
+    const arrowOnClick = (event: React.MouseEvent<HTMLDivElement>): void => {
+        if (event.currentTarget.id === 'prevArrow') page > 1 && dispatch(getLaptops(--page))
+        else if (event.currentTarget.id === 'nextArrow') totalPages > page && dispatch(getLaptops(++page))
+    }
 
 
     if (page < 7)
@@ -40,13 +44,6 @@ const Pagination: React.FC = () => {
                 onClick={paginationItemOnClick}>{ind}</li>
             : <li key={pointsKey} className={classNames(styles.pagination__li, styles.pagination__li_plug)}>...</li>;
     }
-
-    const arrowOnClick = (event: React.MouseEvent<HTMLDivElement>): void => {
-        if (event.currentTarget.id === 'prevArrow') page > 1 && dispatch(getLaptops(--page))
-        else if (event.currentTarget.id === 'nextArrow') totalPages > page && dispatch(getLaptops(++page))
-    }
-
-    console.log(page)
 
     return (<div className={classNames(styles.pagination)}>
         <div className={classNames(styles.pagination__wrapper)}>
