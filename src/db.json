@@ -17,6 +17,108 @@
       "name": "Daniil3",
       "email": "daniil.prokhvatilov@nure.ua",
       "password": "2222"
+    },
+    {
+      "email": "prestig.rd85@gmail.comq",
+      "password": "qqqq",
+      "name": "Daniil Prohvatilov",
+      "id": 4
+    },
+    {
+      "email": "prestig.rd85@gmail.comw",
+      "password": "wwww",
+      "name": "Daniil Prohvatilov",
+      "id": 5
+    },
+    {
+      "email": "prestig.rd85@gmail.comee",
+      "password": "eeee",
+      "name": "Daniil Prohvatilov",
+      "id": 6
     }
-  ]
+  ],
+  "laptops": [
+      {"id": 1, "img": "", "title": "1", "price": 1},
+      {"id": 2, "img": "", "title": "2", "price": 2},
+      {"id": 3, "img": "", "title": "3", "price": 3},
+      {"id": 4, "img": "", "title": "4", "price": 4},
+
+      {"id": 5, "img": "", "title": "5", "price": 5},
+      {"id": 6, "img": "", "title": "6", "price": 6},
+      {"id": 7, "img": "", "title": "7", "price": 7},
+      {"id": 8, "img": "", "title": "8", "price": 8},
+
+      {"id": 9, "img": "", "title": "9", "price": 9},
+      {"id": 10, "img": "", "title": "10", "price": 10},
+      {"id": 11, "img": "", "title": "11", "price": 11},
+      {"id": 12, "img": "", "title": "12", "price": 12},
+
+      {"id": 13, "img": "", "title": "13", "price": 13},
+      {"id": 14, "img": "", "title": "14", "price": 14},
+      {"id": 15, "img": "", "title": "15", "price": 15},
+      {"id": 16, "img": "", "title": "16", "price": 16},
+
+      {"id": 17, "img": "", "title": "17", "price": 17},
+      {"id": 18, "img": "", "title": "18", "price": 18},
+      {"id": 19, "img": "", "title": "19", "price": 19},
+      {"id": 20, "img": "", "title": "20", "price": 20},
+
+      {"id": 21, "img": "", "title": "21", "price": 21},
+      {"id": 22, "img": "", "title": "22", "price": 22},
+      {"id": 23, "img": "", "title": "23", "price": 23},
+      {"id": 24, "img": "", "title": "24", "price": 24},
+
+      {"id": 25, "img": "", "title": "25", "price": 25},
+      {"id": 26, "img": "", "title": "26", "price": 26},
+      {"id": 27, "img": "", "title": "27", "price": 27},
+      {"id": 28, "img": "", "title": "28", "price": 28},
+
+      {"id": 29, "img": "", "title": "29", "price": 29},
+      {"id": 30, "img": "", "title": "30", "price": 30},
+      {"id": 31, "img": "", "title": "31", "price": 31},
+      {"id": 32, "img": "", "title": "32", "price": 32},
+
+      {"id": 33, "img": "", "title": "33", "price": 33},
+      {"id": 34, "img": "", "title": "34", "price": 34},
+      {"id": 35, "img": "", "title": "35", "price": 35},
+      {"id": 36, "img": "", "title": "36", "price": 36},
+
+      {"id": 37, "img": "", "title": "37", "price": 37},
+      {"id": 38, "img": "", "title": "38", "price": 38},
+      {"id": 39, "img": "", "title": "39", "price": 39},
+      {"id": 40, "img": "", "title": "40", "price": 40},
+
+      {"id": 41, "img": "", "title": "41", "price": 41},
+      {"id": 42, "img": "", "title": "42", "price": 42},
+      {"id": 43, "img": "", "title": "43", "price": 43},
+      {"id": 44, "img": "", "title": "44", "price": 44},
+
+      {"id": 45, "img": "", "title": "45", "price": 45},
+      {"id": 46, "img": "", "title": "46", "price": 46},
+      {"id": 47, "img": "", "title": "47", "price": 47},
+      {"id": 48, "img": "", "title": "48", "price": 48},
+
+      {"id": 49, "img": "", "title": "49", "price": 49},
+      {"id": 50, "img": "", "title": "50", "price": 50},
+      {"id": 51, "img": "", "title": "51", "price": 51},
+      {"id": 52, "img": "", "title": "52", "price": 52},
+
+      {"id": 53, "img": "", "title": "53", "price": 53},
+      {"id": 54, "img": "", "title": "54", "price": 54},
+      {"id": 55, "img": "", "title": "55", "price": 55},
+      {"id": 56, "img": "", "title": "56", "price": 56},
+
+      {"id": 57, "img": "", "title": "57", "price": 57},
+      {"id": 58, "img": "", "title": "58", "price": 58},
+      {"id": 59, "img": "", "title": "59", "price": 59},
+      {"id": 60, "img": "", "title": "60", "price": 60},
+
+      {"id": 61, "img": "", "title": "61", "price": 61},
+      {"id": 62, "img": "", "title": "62", "price": 62},
+      {"id": 63, "img": "", "title": "63", "price": 63},
+      {"id": 64, "img": "", "title": "64", "price": 64}
+    ],
+  "laptopsInfo": {
+    "totalCountItems": 64
+  }
 }

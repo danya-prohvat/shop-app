@@ -1,0 +1,50 @@
+$laptopBorder-color: #e2e2e2;
+
+.laptop {
+  width: 22%;
+  margin-bottom: 60px;
+  text-align: center;
+  border: 1px solid $laptopBorder-color;
+  padding-top: 40px;
+
+  &__img {
+    margin: 0 auto;
+    width: 150px;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    box-sizing: border-box;
+    padding: 10px 20px;
+    text-align: justify;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    text-align: left;
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+
+  }
+
+  &__price {
+    width: 50%;
+    font-family: 'Ubuntu', sans-serif;
+
+  }
+
+  &__buy {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+
+      width: 50px;
+    }
+  }
+}
