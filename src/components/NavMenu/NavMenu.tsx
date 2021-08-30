@@ -5,18 +5,20 @@ import shop_logo from '../../assets/imgs/shop_logo.svg';
 import person from '../../assets/imgs/person.svg';
 import trolley from '../../assets/imgs/trolley.svg';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
 
 
 const NavMenu: React.FC = () => {
     const {customerData, authorized} = useTypedSelector(state => state.customerReducerPage)
+    let history = useHistory();
+
 
     return (<div className={classNames(styles.navMenu)}>
         <div className={classNames(styles.navMenu__wrapper)}>
             <div className={classNames(styles.navMenu__logo)}>
                 <img className={classNames(styles.logo__img)} src={shop_logo} alt=""/>
-                <span className={classNames(styles.logo__text)}>Shop App</span>
+                <span className={classNames(styles.logo__text)} onClick={() => history.push("/")}>Shop App</span>
             </div>
             <div className={classNames(styles.navMenu__customer)} >
                 <div className={classNames(styles.customer__person)}>

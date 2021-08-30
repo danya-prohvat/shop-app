@@ -33,7 +33,11 @@ $a-color: #6565ec;
         font-family: 'Ubuntu', sans-serif;
         font-size: 26px;
         font-weight: 400;
-
+        cursor: pointer;
+        transition: .1s;
+        &:hover{
+          transform: scale(1.05);
+        }
       }
     }
 

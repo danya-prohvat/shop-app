@@ -7,7 +7,7 @@ const initialState: ILaptopsInitialState = {
     totalLaptopsCount: 0,
     laptops: [],
     activePage: 1,
-    pageSize: 4,
+    pageSize: 16,
 }
 
 export const getLaptops = createAsyncThunk(

@@ -15,11 +15,18 @@ const Pagination: React.FC = () => {
 
     const paginationItemOnClick = (event: React.MouseEvent<HTMLLIElement>): void => {
         dispatch(getLaptops(event.currentTarget.textContent!))
+        window.scrollTo(0, 0);
     }
 
     const arrowOnClick = (event: React.MouseEvent<HTMLDivElement>): void => {
-        if (event.currentTarget.id === 'prevArrow') activePage > 1 && dispatch(getLaptops(--activePage))
-        else if (event.currentTarget.id === 'nextArrow') totalPages > activePage && dispatch(getLaptops(++activePage))
+        if (event.currentTarget.id === 'prevArrow') {
+            activePage > 1 && dispatch(getLaptops(--activePage))
+            window.scrollTo(0, 0);
+        }
+        else if (event.currentTarget.id === 'nextArrow') {
+            totalPages > activePage && dispatch(getLaptops(++activePage))
+            window.scrollTo(0, 0);
+        }
     }
 
 

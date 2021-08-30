@@ -15,7 +15,7 @@ const Laptops: React.FC = () => {
     }, []);
 
     return (<div className={classNames(styles.laptops)}>
-        {laptops.map(laptop => <Laptop key={laptop.id} title={laptop.title} price={laptop.price}/>)}
+        {laptops.map(laptop => <Laptop key={laptop.id} img={laptop.img} title={laptop.title} price={laptop.price}/>)}
     </div>);
 }
 
