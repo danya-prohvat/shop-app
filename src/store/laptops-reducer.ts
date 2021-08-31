@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {ILaptops, ILaptopsInitialState} from "../types/laptops-types";
+import {ILaptops, ILaptopsInitialState, IPage} from "../types/laptops-types";
 import axios from "axios";
 
 const initialState: ILaptopsInitialState = {
@@ -10,21 +10,37 @@ const initialState: ILaptopsInitialState = {
     pageSize: 16,
 }
 
+
+
+
 export const getLaptops = createAsyncThunk(
     'laptops/getLaptops',
-    async (page: number | string = 1, {getState, dispatch}: any) => {
+    async ({page = 1, title, minPrice, maxPrice}: IPage, {getState, dispatch}: any) => {
         const {pageSize} = getState().laptopsReducerPage
         dispatch(setActivePage(+page))
 
-        const totalCountItems = await axios.get(`http://localhost:3001/laptops`)
-        dispatch(setTotalLaptopsCount(totalCountItems.data.length))
+        let totalCountItems;
 
+        console.log(minPrice)
+        console.log(maxPrice)
 
-        return axios.get(`http://localhost:3001/laptops?_page=${page}&_limit=${pageSize}`)
-            .then(response => (response.data))
+        if (minPrice && maxPrice){
+            await axios.get(`http://localhost:3001/laptops?&price_gte=${minPrice}&price_lte=${maxPrice}`)
+                .then(response => {
+                    dispatch(setTotalLaptopsCount(response.data.length))
+                })
+            return axios.get(`http://localhost:3001/laptops?_page=${page}&_limit=${pageSize}&price_gte=${minPrice}&price_lte=${maxPrice}`)
+                .then(response => (response.data))
+        } else {
+            await axios.get(`http://localhost:3001/laptops`)
+                .then(response => {
+                    dispatch(setTotalLaptopsCount(response.data.length))
+                })
+            return axios.get(`http://localhost:3001/laptops?_page=${page}&_limit=${pageSize}`)
+                .then(response => (response.data))
+        }
     }
 )
-//id_gte=10&id_lte=20&
 
 const laptopsSlice = createSlice({
     name: 'laptops',

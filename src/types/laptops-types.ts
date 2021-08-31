@@ -13,3 +13,9 @@ export interface ILaptops {
     price: number | null,
 }
 
+export interface IPage {
+    page: string | number;
+    title?: string;
+    minPrice?: string;
+    maxPrice?: string;
+}

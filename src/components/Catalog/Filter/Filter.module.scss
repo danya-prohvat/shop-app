@@ -1,4 +1,55 @@
+$btn-color: #00A046;
+$label-color: #959595;
+$btn-background: #FFFFFF;
+
+
 .filter {
-  background-color: red;
   width: 20%;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 0 20px;
+  box-sizing: border-box;
+  &__btn{
+    margin-top: 30px;
+    width: 100%;
+    color: $btn-color;
+    background-color: $btn-background;
+    border: 1px solid $btn-color;
+    box-shadow: 0px 1px 2px 0px rgba(28, 30, 32, 0.1);
+    border-radius: 3px;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    outline: none;
+    &:hover {
+      color: $btn-background;
+      background-color: $btn-color;
+    }
+  }
+  &__label{
+    display: inline-block;
+    width: 100%;
+    color:$label-color;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  &__input{
+    outline: none;
+    margin-bottom: 15px;
+    border: 1px solid $btn-color;
+    border-radius: 3px;
+    font-size: 18px;
+    padding-left: 6px;
+  }
+  &__title{
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &__price{
+    width: 25% ;
+    margin-right: 30px;
+    &:nth-child(1) {
+      margin-right: 20px;
+    }
+  }
 }
