@@ -1,42 +1,35 @@
 import React from 'react';
 import styles from "./Filter.module.scss";
 import classNames from 'classnames';
-import {ISingInFormValues} from "../../../types/authoriationTypes";
 import {Field, Form, Formik} from "formik";
-import formPreloader from "../../../assets/imgs/formPreloader.gif";
-import {IFormValues} from "../../../types/catalogTypes";
+import {IFilterFormValues} from "../../../types/catalogTypes";
 import {useDispatch} from "react-redux";
 import {getLaptops} from "../../../store/laptops-reducer";
-import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import {FilterFormValidation} from "../../../utils/formValidation";
 
 const Filter: React.FC = () => {
     const dispatch = useDispatch();
-    let {activePage} = useTypedSelector(state => state.laptopsReducerPage);
 
-
-    const initialValues: IFormValues = {
+    const initialValues: IFilterFormValues = {
         title: '',
         minPrice: '',
         maxPrice: '',
     };
 
-    const formSubmit = (value: IFormValues): void => {
-        dispatch(getLaptops({page: activePage, ...value}));
+    const formSubmit = (value: IFilterFormValues,): void => {
+        dispatch(getLaptops({...value, fromForm: true}));
     };
+    const formReset = (): void => {
+        dispatch(getLaptops({fromForm: true}));
+    };
+
 
     return (<div className={classNames(styles.filter)}>
         <Formik
             initialValues={initialValues}
-            // validate={}
-            // validate={values => {
-            //     if (values.minPrice) {
-            //         values.minPrice = values.minPrice.trim();
-            //     }
-            //     if (values.maxPrice) {
-            //         values.maxPrice = values.maxPrice.trim();
-            //     }
-            // }}
-            onSubmit={formSubmit}>
+            validate={FilterFormValidation}
+            onSubmit={formSubmit}
+            onReset={formReset}>
             <Form className={classNames(styles.filter__form)}>
                 <div className={classNames(styles.filter__filed)}>
                     <label className={classNames(styles.filter__label)} htmlFor="title">Title: </label>
@@ -49,13 +42,16 @@ const Filter: React.FC = () => {
                     <label className={classNames(styles.filter__label)} htmlFor="">Price: </label>
                     <Field className={classNames(styles.filter__input, styles.filter__price)} id="minPrice"
                            name="minPrice"
-                           type="text" placeholder="from"/>
+                           type="number" placeholder="from"/>
                     <Field className={classNames(styles.filter__input, styles.filter__price)} id="maxPrice"
                            name="maxPrice"
-                           type="text" placeholder="to"/>
+                           type="number" placeholder="to"/>
+                </div>
+                <div className={classNames(styles.filter__buttons)}>
+                    <button className={classNames(styles.filter__submit)} type="submit">Search</button>
+                    <button type='reset' className={classNames(styles.filter__reset)}></button>
                 </div>
 
-                <button className={classNames(styles.filter__btn)} type="submit">Search</button>
             </Form>
         </Formik>
     </div>);

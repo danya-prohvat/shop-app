@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {ICustomerData, ICustomerInitialState} from "../types/customer-types";
-import {ISingInFormValues, ISingUpFormValues} from "../types/authoriationTypes";
+import {ISingInFormValues, ISingUpFormValues} from "../types/authorizationTypes";
 import axios from "axios";
 
 const initialState: ICustomerInitialState = {

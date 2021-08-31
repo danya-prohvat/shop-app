@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {ILaptops, ILaptopsInitialState, IPage} from "../types/laptops-types";
+import {ILaptops, ILaptopsInitialState, IGetLaptopsPayload} from "../types/laptops-types";
 import axios from "axios";
 
 const initialState: ILaptopsInitialState = {
@@ -8,39 +8,48 @@ const initialState: ILaptopsInitialState = {
     laptops: [],
     activePage: 1,
     pageSize: 16,
+    filterData: {
+        title: '',
+        maxPrice: '',
+        minPrice: '',
+    }
 }
-
-
-
 
 export const getLaptops = createAsyncThunk(
     'laptops/getLaptops',
-    async ({page = 1, title, minPrice, maxPrice}: IPage, {getState, dispatch}: any) => {
-        const {pageSize} = getState().laptopsReducerPage
-        dispatch(setActivePage(+page))
+    async ({page, title, minPrice, maxPrice, fromForm = false}: IGetLaptopsPayload, {getState, dispatch}: any) => {
+        const {pageSize, activePage, filterData} = getState().laptopsReducerPage
 
-        let totalCountItems;
+        if (!fromForm){
+            title = filterData.title
+            minPrice = filterData.minPrice
+            maxPrice = filterData.maxPrice
 
-        console.log(minPrice)
-        console.log(maxPrice)
-
-        if (minPrice && maxPrice){
-            await axios.get(`http://localhost:3001/laptops?&price_gte=${minPrice}&price_lte=${maxPrice}`)
-                .then(response => {
-                    dispatch(setTotalLaptopsCount(response.data.length))
-                })
-            return axios.get(`http://localhost:3001/laptops?_page=${page}&_limit=${pageSize}&price_gte=${minPrice}&price_lte=${maxPrice}`)
-                .then(response => (response.data))
+            if (!page) page = activePage
+            dispatch(setActivePage(+page!))
         } else {
-            await axios.get(`http://localhost:3001/laptops`)
-                .then(response => {
-                    dispatch(setTotalLaptopsCount(response.data.length))
-                })
-            return axios.get(`http://localhost:3001/laptops?_page=${page}&_limit=${pageSize}`)
-                .then(response => (response.data))
+            dispatch(setActivePage(1))
+            if (!(title || minPrice || maxPrice)) {
+                title = ''
+                minPrice = ''
+                maxPrice = ''
+            }
         }
+
+        dispatch(setFilterData({title: title, minPrice: minPrice, maxPrice: maxPrice}))
+
+        await axios.get(`http://localhost:3001/laptops?${minPrice && '&price_gte=' + minPrice}${maxPrice && '&price_lte=' + maxPrice}${title && '&title_like=' + title}`)
+            .then(response => dispatch(setTotalLaptopsCount(response.data.length)))
+        return axios.get(`http://localhost:3001/laptops?_page=${page}&_limit=${pageSize}${minPrice && '&price_gte=' + minPrice}${maxPrice && '&price_lte=' + maxPrice}${title && '&title_like=' + title}`)
+            .then(response => (response.data))
     }
 )
+
+// interface IFilterDataPayload {
+//     title: string | undefined;
+//     maxPrice: string | undefined;
+//     minPrice: string | undefined;
+// }
 
 const laptopsSlice = createSlice({
     name: 'laptops',
@@ -58,6 +67,11 @@ const laptopsSlice = createSlice({
         setLaptops(state, action: PayloadAction<ILaptops[]>) {
             state.laptops = action.payload
         },
+        setFilterData(state, action: PayloadAction<any>) {
+            state.filterData.title = action.payload.title
+            state.filterData.maxPrice = action.payload.maxPrice
+            state.filterData.minPrice = action.payload.minPrice
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getLaptops.pending, (state) => {
@@ -74,5 +88,5 @@ const laptopsSlice = createSlice({
 })
 
 
-export const {setTotalLaptopsCount, setActivePage} = laptopsSlice.actions
+export const {setTotalLaptopsCount, setActivePage, setFilterData} = laptopsSlice.actions
 export default laptopsSlice.reducer

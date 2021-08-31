@@ -1,6 +1,7 @@
 $btn-color: #00A046;
 $label-color: #959595;
 $btn-background: #FFFFFF;
+$cancel-color: #f05555;
 
 
 .filter {
@@ -8,8 +9,13 @@ $btn-background: #FFFFFF;
   font-family: 'Ubuntu', sans-serif;
   padding: 0 20px;
   box-sizing: border-box;
-  &__btn{
+  &__buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__submit{
     margin-top: 30px;
+    margin-right: 6px;
     width: 100%;
     color: $btn-color;
     background-color: $btn-background;
@@ -24,6 +30,39 @@ $btn-background: #FFFFFF;
     &:hover {
       color: $btn-background;
       background-color: $btn-color;
+    }
+  }
+  &__reset{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    &:hover{
+      transform: scale(1.05);
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      border-radius: 5px;
+      bottom: 0;
+      left: 0;
+      background-color:$cancel-color;
+      transform: rotate(45deg);
+    }
+    &:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      border-radius: 5px;
+      bottom: 0;
+      left: 0;
+      background-color:$cancel-color;
+      transform: rotate(-45deg);
     }
   }
   &__label{

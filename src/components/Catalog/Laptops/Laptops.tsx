@@ -11,7 +11,7 @@ const Laptops: React.FC = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getLaptops({page:1}));
+        dispatch(getLaptops({}));
     }, []);
 
     return (<div className={classNames(styles.laptops)}>

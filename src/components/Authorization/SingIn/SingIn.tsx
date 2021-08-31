@@ -2,8 +2,8 @@ import React from 'react';
 import styles from "./SignIn.module.scss";
 import classNames from 'classnames';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
-import {ISingInFormValues} from "../../../types/authoriationTypes";
-import {signInFormValidation} from "../formValidation";
+import {ISingInFormValues} from "../../../types/authorizationTypes";
+import {signInFormValidation} from "../../../utils/formValidation";
 import {useDispatch} from "react-redux";
 import {
     signInThunk,

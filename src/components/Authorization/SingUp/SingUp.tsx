@@ -2,8 +2,8 @@ import React from 'react';
 import styles from "./SignUp.module.scss";
 import classNames from 'classnames';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
-import {ISingUpFormValues} from "../../../types/authoriationTypes";
-import {signUpFormValidation} from "../formValidation";
+import {ISingUpFormValues} from "../../../types/authorizationTypes";
+import {signUpFormValidation} from "../../../utils/formValidation";
 import {useDispatch} from "react-redux";
 import {
     signUpThunk,

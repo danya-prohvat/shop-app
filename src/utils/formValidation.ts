@@ -3,7 +3,8 @@ import {
     ISingInFormValues,
     ISingUpFormErrors,
     ISingUpFormValues
-} from "../../types/authoriationTypes";
+} from "../types/authorizationTypes";
+import {IFilterFormValues} from "../types/catalogTypes";
 
 export const signInFormValidation = (values: ISingInFormValues): ISingInFormErrors => {
     const errors: ISingInFormErrors = {};
@@ -35,4 +36,11 @@ export const signUpFormValidation = (values: ISingUpFormValues): ISingUpFormErro
     if (values.password !== values.repeatPassword) errors.password = 'password mismatch';
 
     return errors;
+};
+
+export const FilterFormValidation = (values: IFilterFormValues): void => {
+        // values.minPrice = values.minPrice.toString().replace(' ', '');
+        // values.maxPrice = values.maxPrice.toString().replace(' ', '');
+
+        values.title = values.title.trimStart();
 };
