@@ -4,6 +4,7 @@ import NavMenu from "./components/NavMenu/NavMenu";
 import Catalog from "./components/Catalog/Catalog";
 import Authorization from "./components/Authorization/Authorization";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
+import Page404 from "./components/Page404/Page404";
 
 
 const App: React.FC = () => {
@@ -14,6 +15,7 @@ const App: React.FC = () => {
             <Switch>
                 <Route component={Catalog} path="/" exact/>
                 <Route component={Authorization} path="/authorization"/>
+                <Route path="*" component={Page404}/>
             </Switch>
         </BrowserRouter>
     </div>);

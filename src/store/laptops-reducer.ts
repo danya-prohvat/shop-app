@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {ILaptops, ILaptopsInitialState, IGetLaptopsPayload} from "../types/laptops-types";
+import {ILaptops, ILaptopsInitialState, IGetLaptopsPayload, IFilterData} from "../types/laptops-types";
 import axios from "axios";
 
 const initialState: ILaptopsInitialState = {
@@ -45,12 +45,6 @@ export const getLaptops = createAsyncThunk(
     }
 )
 
-// interface IFilterDataPayload {
-//     title: string | undefined;
-//     maxPrice: string | undefined;
-//     minPrice: string | undefined;
-// }
-
 const laptopsSlice = createSlice({
     name: 'laptops',
     initialState,
@@ -67,7 +61,7 @@ const laptopsSlice = createSlice({
         setLaptops(state, action: PayloadAction<ILaptops[]>) {
             state.laptops = action.payload
         },
-        setFilterData(state, action: PayloadAction<any>) {
+        setFilterData(state, action: PayloadAction<IFilterData>) {
             state.filterData.title = action.payload.title
             state.filterData.maxPrice = action.payload.maxPrice
             state.filterData.minPrice = action.payload.minPrice
@@ -79,6 +73,7 @@ const laptopsSlice = createSlice({
         })
         builder.addCase(getLaptops.fulfilled, (state, action) => {
             laptopsSlice.caseReducers.setLaptops(state, action);
+            laptopsSlice.caseReducers.toggleFetching(state);
         })
         builder.addCase(getLaptops.rejected, (state, action) => {
             laptopsSlice.caseReducers.toggleFetching(state);

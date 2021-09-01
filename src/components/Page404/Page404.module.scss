@@ -1,0 +1,20 @@
+$link-color:#5A65EC;
+
+.page404 {
+  padding-top: 250px;
+  text-align: center;
+
+  &__message {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 400;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  &__link {
+    font-size: 22px;
+    a {
+      color:$link-color;
+    }
+  }
+}

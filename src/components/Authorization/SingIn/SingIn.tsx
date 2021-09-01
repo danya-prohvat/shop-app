@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import {
     signInThunk,
 } from './../../../store/customer-reducer';
-import formPreloader from '../../../assets/imgs/formPreloader.gif';
+import formPreloader from '../../../assets/imgs/Preloader.gif';
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 

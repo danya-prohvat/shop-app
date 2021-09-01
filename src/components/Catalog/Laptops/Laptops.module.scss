@@ -4,4 +4,15 @@
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  &__fetching {
+    width: 150px;
+    margin-top: 150px;
+  }
+
+  &__errorMessage{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
 }

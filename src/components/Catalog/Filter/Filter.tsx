@@ -32,14 +32,14 @@ const Filter: React.FC = () => {
             onReset={formReset}>
             <Form className={classNames(styles.filter__form)}>
                 <div className={classNames(styles.filter__filed)}>
-                    <label className={classNames(styles.filter__label)} htmlFor="title">Title: </label>
+                    <label className={classNames(styles.filter__label)} htmlFor="title">Title :</label>
                     <Field className={classNames(styles.filter__input, styles.filter__title)} id="title" name="title"
                            type="text"
                            placeholder="by title..."/>
                 </div>
 
                 <div className={classNames(styles.filter__filed)}>
-                    <label className={classNames(styles.filter__label)} htmlFor="">Price: </label>
+                    <label className={classNames(styles.filter__label)} htmlFor="">Price($) :</label>
                     <Field className={classNames(styles.filter__input, styles.filter__price)} id="minPrice"
                            name="minPrice"
                            type="number" placeholder="from"/>

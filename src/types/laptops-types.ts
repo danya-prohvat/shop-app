@@ -1,12 +1,10 @@
-import {IFilterFormValues} from "./catalogTypes";
-
 export interface ILaptopsInitialState {
     fetching: boolean,
     laptops: ILaptops[],
     activePage: number,
     pageSize: number,
     totalLaptopsCount: number,
-    filterData: IFilterFormValues,
+    filterData: IFilterData,
 }
 
 export interface ILaptops {
@@ -18,8 +16,14 @@ export interface ILaptops {
 
 export interface IGetLaptopsPayload {
     page?: string | number;
-    title?: string | null;
-    minPrice?: string | null;
-    maxPrice?: string | null;
+    title?: string;
+    minPrice?: string;
+    maxPrice?: string;
     fromForm?: boolean;
+}
+
+export interface IFilterData {
+    title: string | undefined;
+    maxPrice: string | undefined;
+    minPrice: string | undefined;
 }
