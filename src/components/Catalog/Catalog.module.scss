@@ -3,10 +3,28 @@
     padding-top: 60px;
     max-width: 1360px;
     min-height: 80vh;
-    width: 80%;
+    width: 96%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
   }
 
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .catalog {
+    &__wrapper {
+      width: 98%;
+    }
+
+  }
+}
+
+@media (min-width: 320px) and (max-width: 991px) {
+  .catalog {
+    &__wrapper {
+      width: 100%;
+    }
+
+  }
 }

@@ -25,7 +25,7 @@ const Filter: React.FC = () => {
 
 
     return (<div className={classNames(styles.filter)}>
-        <Formik
+        <Formik className={classNames(styles.filter__wrapper)}
             initialValues={initialValues}
             validate={FilterFormValidation}
             onSubmit={formSubmit}

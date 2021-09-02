@@ -9,11 +9,13 @@ $cancel-color: #f05555;
   font-family: 'Ubuntu', sans-serif;
   padding: 0 20px;
   box-sizing: border-box;
-  &__buttons{
+
+  &__buttons {
     display: flex;
     justify-content: space-between;
   }
-  &__submit{
+
+  &__submit {
     margin-top: 30px;
     margin-right: 6px;
     width: 100%;
@@ -27,22 +29,26 @@ $cancel-color: #f05555;
     padding-bottom: 5px;
     font-size: 20px;
     outline: none;
+
     &:hover {
       color: $btn-background;
       background-color: $btn-color;
     }
   }
-  &__reset{
+
+  &__reset {
     position: relative;
     width: 50px;
     height: 50px;
     cursor: pointer;
     background-color: transparent;
     border: none;
-    &:hover{
+
+    &:hover {
       transform: scale(1.03);
     }
-    &:after{
+
+    &:after {
       content: '';
       position: absolute;
       width: 100%;
@@ -50,10 +56,11 @@ $cancel-color: #f05555;
       border-radius: 5px;
       bottom: 0;
       left: 0;
-      background-color:$cancel-color;
+      background-color: $cancel-color;
       transform: rotate(45deg);
     }
-    &:before{
+
+    &:before {
       content: '';
       position: absolute;
       width: 100%;
@@ -61,18 +68,20 @@ $cancel-color: #f05555;
       border-radius: 5px;
       bottom: 0;
       left: 0;
-      background-color:$cancel-color;
+      background-color: $cancel-color;
       transform: rotate(-45deg);
     }
   }
-  &__label{
+
+  &__label {
     display: inline-block;
     width: 100%;
-    color:$label-color;
+    color: $label-color;
     font-size: 26px;
     margin-bottom: 10px;
   }
-  &__input{
+
+  &__input {
     outline: none;
     margin-bottom: 15px;
     border: 1px solid $btn-color;
@@ -80,15 +89,64 @@ $cancel-color: #f05555;
     font-size: 18px;
     padding-left: 6px;
   }
-  &__title{
+
+  &__title {
     width: 100%;
     box-sizing: border-box;
   }
-  &__price{
-    width: 25% ;
+
+  &__price {
+    width: 25%;
     margin-right: 30px;
+
     &:nth-child(1) {
       margin-right: 20px;
     }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .filter {
+    padding: 0 5px;
+
+    &__label {
+      font-size: 20px;
+    }
+
+    &__input {
+      margin-bottom: 10px;
+      font-size: 16px;
+      padding-left: 4px;
+    }
+
+    &__submit {
+      margin-top: 20px;
+      height: 30px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-size: 18px;
+    }
+
+    &__reset {
+      width: 37px;
+      height: 37px;
+
+    }
+  }
+}
+
+
+
+@media (min-width: 320px) and (max-width: 469px) {
+  .filter {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 300px;
+    margin-bottom: 40px;
+
+    &__label {
+      font-size: 22px;
+    }
+
   }
 }

@@ -70,3 +70,59 @@
     }
   }
 }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pagination {
+    margin-top: 15px;
+
+  &__li {
+    font-size: 20px;
+
+    &_active {
+      font-size: 30px;
+    }
+  }
+  &__arrow {
+    img {
+      width: 22px;
+    }
+  }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 469px) {
+  .pagination {
+    margin-top: 10px;
+
+    &__wrapper {
+      width: 90%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    &__ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    &__li {
+      font-size: 22px;
+
+      &_active {
+        font-size: 28px;
+      }
+    }
+
+    &__arrow {
+      img {
+        width: 20px;
+      }
+    }
+  }
+}

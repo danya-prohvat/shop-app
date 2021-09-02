@@ -10,9 +10,29 @@
     margin-top: 150px;
   }
 
-  &__errorMessage{
+  &__errorMessage {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     font-weight: 400;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .laptops {
+
+    &__fetching {
+      width: 120px;
+      margin-top: 100px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 991px) {
+  .laptops {
+    width: 100%;
+    &__fetching {
+      width: 100px;
+      margin-top: 30px;
+    }
   }
 }
