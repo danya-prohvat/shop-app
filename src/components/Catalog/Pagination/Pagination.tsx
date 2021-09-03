@@ -13,19 +13,20 @@ const Pagination: React.FC = () => {
         totalPages = Math.ceil(totalLaptopsCount / pageSize);
     const dispatch = useDispatch();
 
-    const paginationItemOnClick = (event: React.MouseEvent<HTMLLIElement>): void => {
-        dispatch(getLaptops({page:event.currentTarget.textContent!}))
+    const changePage = (page: number): void => {
+        dispatch(getLaptops({page}));
         window.scrollTo(0, 0);
+    }
+
+    const paginationItemOnClick = (event: React.MouseEvent<HTMLLIElement>): void => {
+        changePage(+event.currentTarget.textContent!);
     }
 
     const arrowOnClick = (event: React.MouseEvent<HTMLDivElement>): void => {
         if (event.currentTarget.id === 'prevArrow') {
-            activePage > 1 && dispatch(getLaptops({page:--activePage}))
-            window.scrollTo(0, 0);
-        }
-        else if (event.currentTarget.id === 'nextArrow') {
-            totalPages > activePage && dispatch(getLaptops({page:++activePage}))
-            window.scrollTo(0, 0);
+            changePage(--activePage);
+        } else {
+            changePage(++activePage);
         }
     }
 
@@ -47,10 +48,13 @@ const Pagination: React.FC = () => {
 
     function createLi(ind: number | null, pointsKey: string | undefined = undefined) {
         return ind ?
-            <li key={ind} className={classNames(styles.pagination__li, {[styles.pagination__li_active]: activePage === ind})}
+            <li key={ind}
+                className={classNames(styles.pagination__li, {[styles.pagination__li_active]: activePage === ind})}
                 onClick={paginationItemOnClick}>{ind}</li>
-            : <li key={pointsKey} className={classNames(styles.pagination__li, styles.pagination__li_plug)}>...</li>;
+            :
+            <li key={pointsKey} className={classNames(styles.pagination__li, styles.pagination__li_plug)}>...</li>;
     }
+
 
     return (<div className={classNames(styles.pagination)}>
         <div className={classNames(styles.pagination__wrapper)}>

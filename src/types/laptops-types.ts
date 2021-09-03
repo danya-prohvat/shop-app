@@ -15,7 +15,7 @@ export interface ILaptops {
 }
 
 export interface IGetLaptopsPayload {
-    page?: string | number;
+    page?: number;
     title?: string;
     minPrice?: string;
     maxPrice?: string;

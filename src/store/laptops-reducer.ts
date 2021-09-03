@@ -26,7 +26,7 @@ export const getLaptops = createAsyncThunk(
             maxPrice = filterData.maxPrice
 
             if (!page) page = activePage
-            dispatch(setActivePage(+page!))
+            dispatch(setActivePage(page!))
         } else {
             dispatch(setActivePage(1))
             if (!(title || minPrice || maxPrice)) {

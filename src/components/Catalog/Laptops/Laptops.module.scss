@@ -27,7 +27,18 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 991px) {
+@media (min-width: 470px) and (max-width: 991px) {
+  .laptops {
+    width: 90%;
+    margin: 0 auto;
+    &__fetching {
+      width: 100px;
+      margin-top: 30px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 469px) {
   .laptops {
     width: 100%;
     &__fetching {

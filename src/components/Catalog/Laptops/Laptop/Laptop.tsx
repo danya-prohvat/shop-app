@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from "./Laptop.module.scss";
 import classNames from 'classnames';
+import {ILaptopProps} from "../../../../types/catalogTypes";
 
-interface ILaptopProps {
-    title: string;
-    price: number | null;
-    img: string;
-}
+
 
 const Laptop: React.FC<ILaptopProps> = ({title, price, img}) => {
 

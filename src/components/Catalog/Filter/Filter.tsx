@@ -16,7 +16,7 @@ const Filter: React.FC = () => {
         maxPrice: '',
     };
 
-    const formSubmit = (value: IFilterFormValues,): void => {
+    const formSubmit = (value: IFilterFormValues): void => {
         dispatch(getLaptops({...value, fromForm: true}));
     };
     const formReset = (): void => {
