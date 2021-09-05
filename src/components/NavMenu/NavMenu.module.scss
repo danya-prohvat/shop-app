@@ -35,7 +35,8 @@ $a-color: #6565ec;
         font-weight: 400;
         cursor: pointer;
         transition: .1s;
-        &:hover{
+
+        &:hover {
           transform: scale(1.05);
         }
       }
@@ -70,8 +71,29 @@ $a-color: #6565ec;
       }
 
       &__trolley {
+        position: relative;
         margin-left: 45px;
-        width: 40px;
+
+        img {
+          width: 40px;
+        }
+      }
+
+      &__itemsInCartCount {
+        position: absolute;
+        right: -3px;
+        bottom: 0;
+        display: block;
+        text-align: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
+        line-height: 22px;
+        font-size: 16px;
+        background-color: white;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 600;
       }
     }
   }
