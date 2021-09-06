@@ -73,7 +73,9 @@ $a-color: #6565ec;
       &__trolley {
         position: relative;
         margin-left: 45px;
-
+        &_clickable{
+          cursor: pointer;
+        }
         img {
           width: 40px;
         }

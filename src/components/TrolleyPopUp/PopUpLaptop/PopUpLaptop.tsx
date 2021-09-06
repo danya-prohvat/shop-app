@@ -3,14 +3,20 @@ import styles from "./PopUpLaptop.module.scss";
 import classNames from 'classnames';
 import deleteIcon from "../../../assets/imgs/delete.png"
 import {IPopUpLaptopProps} from "../../../types/popUpTypes";
+import {useDispatch} from "react-redux";
+import {editLaptopsInBasket} from "../../../store/customer-reducer";
 
 
-const PopUpLaptop: React.FC<IPopUpLaptopProps> = ({title, price, img}) => {
+const PopUpLaptop: React.FC<IPopUpLaptopProps> = ({id, title, price, img}) => {
+    const dispatch = useDispatch()
 
+    const deleteIconOnClick = (): void => {
+        dispatch(editLaptopsInBasket(id));
+    }
 
     return (<div className={classNames(styles.laptop)}>
         <div className={classNames(styles.laptop__img)}>
-            <img src={img} alt=""/>
+            <img src={'laptopsImages/' + img} alt=""/>
         </div>
         <div className={classNames(styles.laptop__description)}>
             <div className={classNames(styles.laptop__text)}>
@@ -18,7 +24,8 @@ const PopUpLaptop: React.FC<IPopUpLaptopProps> = ({title, price, img}) => {
                 <span className={classNames(styles.laptop__price)}>{price}</span>
             </div>
             <div className={classNames(styles.laptop__deleteIcon)}>
-                <img className={classNames(styles.laptop__deleteIcon)} src={deleteIcon} alt=""/>
+                <img onClick={deleteIconOnClick} className={classNames(styles.laptop__deleteIcon)} src={deleteIcon}
+                     alt=""/>
             </div>
         </div>
     </div>);

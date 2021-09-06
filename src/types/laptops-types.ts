@@ -8,7 +8,7 @@ export interface ILaptopsInitialState {
 }
 
 export interface ILaptops {
-    id: number | null,
+    id:number,
     img: string,
     title: string,
     price: number | null,

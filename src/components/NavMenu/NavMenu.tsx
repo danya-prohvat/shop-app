@@ -7,8 +7,6 @@ import trolley from '../../assets/imgs/trolley.svg';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {NavLink, useHistory} from "react-router-dom";
 import TrolleyPopUp from "../TrolleyPopUp/TrolleyPopUp";
-import {ISingInFormValues} from "../../types/authorizationTypes";
-import {signInThunk} from "../../store/customer-reducer";
 
 
 const NavMenu: React.FC = () => {
@@ -18,17 +16,20 @@ const NavMenu: React.FC = () => {
 
 
     const showPopUp = (): void => {
-        setPopupSeen(true);
-        document.body.style.overflow = "hidden"
+        if (!authorized)
+            history.push('/authorization');
+        else {
+            setPopupSeen(true);
+            document.body.style.overflow = "hidden"
+        }
     };
 
-    const closePopUp = (event:any): void => {
+    const closePopUp = (event: any): void => {
         if (event.target.id === 'close' || event.target.id === 'popup') {
             setPopupSeen(false);
             document.body.style.overflow = ""
         }
     };
-
     return (<div className={classNames(styles.navMenu)}>
         <div className={classNames(styles.navMenu__wrapper)}>
             <div className={classNames(styles.navMenu__logo)}>
@@ -42,8 +43,8 @@ const NavMenu: React.FC = () => {
                         {authorized ? customerData.name : <NavLink to="/authorization">Sign in</NavLink>}
                     </span>
                 </div>
-                <div onClick={showPopUp} className={classNames(styles.customer__trolley)}>
-                    <span className={classNames(styles.customer__itemsInCartCount)}>0</span>
+                <div onClick={showPopUp} className={classNames(styles.customer__trolley, {[styles.customer__trolley_clickable]:authorized})}>
+                    {authorized && <span className={classNames(styles.customer__itemsInCartCount)}>{customerData.inBasket.length}</span>}
                     <img src={trolley} alt=""/>
                 </div>
             </div>

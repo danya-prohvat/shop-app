@@ -4,6 +4,7 @@ export interface IFilterFormValues {
     maxPrice: string ;
 }
 export interface ILaptopProps {
+    id:number;
     title: string;
     price: number | null;
     img: string;

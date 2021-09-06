@@ -3,7 +3,8 @@ export interface ITrolleyPopUpProps {
 }
 
 export interface IPopUpLaptopProps {
+    id:number;
     title: string;
-    price: string;
+    price: number  | null;
     img: string;
 }

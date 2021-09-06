@@ -23,7 +23,7 @@ const Laptops: React.FC = () => {
 
 
     return (<div className={classNames(styles.laptops)}>
-        {laptops.length > 0 ? laptops.map(laptop => <Laptop key={laptop.id} img={laptop.img} title={laptop.title} price={laptop.price}/>)
+        {laptops.length > 0 ? laptops.map(laptop => <Laptop key={laptop.id} id={laptop.id} img={laptop.img} title={laptop.title} price={laptop.price}/>)
         : <span className={classNames(styles.laptops__errorMessage)}>no results for this search</span>}
     </div>);
 }
