@@ -9,8 +9,7 @@ import nextArrow from '../../../assets/imgs/nextArrow.svg';
 
 const Pagination: React.FC = () => {
     let {activePage, pageSize, totalLaptopsCount} = useTypedSelector(state => state.laptopsReducerPage);
-    let paginationItems = [],
-        totalPages = Math.ceil(totalLaptopsCount / pageSize);
+    const totalPages = Math.ceil(totalLaptopsCount / pageSize);
     const dispatch = useDispatch();
 
     const changePage = (page: number): void => {
@@ -30,21 +29,27 @@ const Pagination: React.FC = () => {
         }
     }
 
+    const pagination = calculatePagination();
+    function calculatePagination () {
+        let paginationItems = [];
+        if (activePage < 7)
+            for (let i = 1; i < activePage; i++) paginationItems.push(createLi(i));
+        else {
+            paginationItems.push(createLi(1));
+            paginationItems.push(createLi(null, 'firstPoints'));
+            for (let i = activePage - 3; i < activePage; i++) paginationItems.push(createLi(i));
+        }
 
-    if (activePage < 7)
-        for (let i = 1; i < activePage; i++) paginationItems.push(createLi(i));
-    else {
-        paginationItems.push(createLi(1));
-        paginationItems.push(createLi(null, 'firstPoints'));
-        for (let i = activePage - 3; i < activePage; i++) paginationItems.push(createLi(i));
+        for (let i = activePage; i < activePage + 5 && i <= totalPages; i++) paginationItems.push(createLi(i));
+
+        if (totalPages - activePage > 4) {
+            paginationItems[paginationItems.length - 1] = createLi(null, 'secondPoints');
+            paginationItems.push(createLi(totalPages));
+        }
+        if (totalLaptopsCount === 0) paginationItems.push(createLi(1));
+        return paginationItems;
     }
 
-    for (let i = activePage; i < activePage + 5 && i <= totalPages; i++) paginationItems.push(createLi(i));
-
-    if (totalPages - activePage > 4) {
-        paginationItems[paginationItems.length - 1] = createLi(null, 'secondPoints');
-        paginationItems.push(createLi(totalPages));
-    }
 
     function createLi(ind: number | null, pointsKey: string | undefined = undefined) {
         return ind ?
@@ -63,7 +68,7 @@ const Pagination: React.FC = () => {
                 <img src={prevArrow} alt=""/>
             </div>
             <ul className={classNames(styles.pagination__ul)}>
-                {paginationItems}
+                {pagination}
             </ul>
             <div onClick={arrowOnClick} id='nextArrow'
                  className={classNames(styles.pagination__arrow, styles.pagination__nextArrow, {[styles.pagination__arrow_disabled]: !(activePage < totalPages)})}>

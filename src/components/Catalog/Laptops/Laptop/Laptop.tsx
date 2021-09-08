@@ -33,7 +33,7 @@ const Laptop: React.FC<ILaptopProps> = ({id, title, price, img}) => {
             <span>{title}</span>
         </div>
         <div className={classNames(styles.laptop__buy)}>
-            <span className={classNames(styles.laptop__price)}>{price}</span>
+            <span className={classNames(styles.laptop__price)}>{price} <span className={classNames(styles.laptop__currency)}>$</span></span>
             <img onClick={trolleyIconOnClick} src={laptopIsChecked ? trolleyChecked : trolleyUnchecked} alt=""/>
         </div>
 

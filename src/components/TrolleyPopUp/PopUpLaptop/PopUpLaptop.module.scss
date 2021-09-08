@@ -48,6 +48,9 @@
     font-size: 22px;
     float: right;
   }
+  &__currency{
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -55,7 +58,12 @@
 }
 
 @media (min-width: 470px) and (max-width: 991px) {
-
+  .laptop {
+    &__title {
+      width: 75%;
+      display: inline-block;
+    }
+  }
 }
 
 @media (min-width: 320px) and (max-width: 469px) {
@@ -76,10 +84,15 @@
 
     &__title {
       font-size: 18px;
+      width: 67%;
+      display: inline-block;
     }
 
     &__price {
-      font-size: 20px;
+      font-size: 18px;
+    }
+    &__currency{
+      font-size: 16px;
     }
   }
 }

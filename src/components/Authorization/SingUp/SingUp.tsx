@@ -12,8 +12,6 @@ import formPreloader from '../../../assets/imgs/Preloader.gif';
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 
-
-
 const SignUp: React.FC = () => {
     const dispatch = useDispatch();
     const {formData} = useTypedSelector(state => state.customerReducerPage)

@@ -21,7 +21,7 @@ const PopUpLaptop: React.FC<IPopUpLaptopProps> = ({id, title, price, img}) => {
         <div className={classNames(styles.laptop__description)}>
             <div className={classNames(styles.laptop__text)}>
                 <span className={classNames(styles.laptop__title)}>{title}</span>
-                <span className={classNames(styles.laptop__price)}>{price}</span>
+                <span className={classNames(styles.laptop__price)}>{price} <span className={classNames(styles.laptop__currency)}>$</span></span>
             </div>
             <div className={classNames(styles.laptop__deleteIcon)}>
                 <img onClick={deleteIconOnClick} className={classNames(styles.laptop__deleteIcon)} src={deleteIcon}
